@@ -133,9 +133,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
 
 1. <a name="whitespace">Whitespace</a>
-  - Never mix spaces and tabs.
-  - When beginning a project, before you write any code, choose between soft indents (spaces) or real tabs, consider this **law**.
-      - For readability, I always recommend setting your editor's indent size to two characters &mdash; this means two spaces or two spaces representing a real tab.
+  - Set your editor to use soft indents (insert spaces when you press the tab key).
+      - The indent size should be two characters (two spaces).
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
