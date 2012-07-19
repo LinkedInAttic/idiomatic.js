@@ -1346,7 +1346,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 11.C.1.1
     // An example with a return statement not returning what the user intended
-    // Bad: the JS interpreter will automatically insert a semicolon after the return statement, and the expression a + b won't be returned
+    // Bad: the JS interpreter will automatically insert a semicolon after the return statement, 
+    // and the expression a + b won't be returned
     return
     a + b;
 
