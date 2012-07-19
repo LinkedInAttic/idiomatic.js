@@ -1302,7 +1302,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 11.B.1.2
     // An example with a function expression, followed by a self-executing anonymous function
-    // We end up passing the second function as an argument to the first function and then trying to call the result of the first function call as a function.
+    // We end up passing the second function as an argument to the first function 
+    // and then trying to call the result of the first function call as a function.
     // Bad:
     var fn = function() { 
       alert('hello'); 
