@@ -21,6 +21,7 @@
 * Alex Navasardyan [@alexnavasardyan](http://twitter.com/alexnavasardyan), [github](https://github.com/2k00l)
 * Mihai Paun [@mihaipaun](http://twitter.com/mihaipaun), [github](https://github.com/mihaipaun)
 * Evgeny Mandrikov [@\_godin\_](http://twitter.com/_godin_), [github](https://github.com/Godin)
+* Sofish Lin [@sofish](http://twitter.com/sofish), [github](https://github.com/sofish)
 
 
 ## All code in any code-base should look like a single person typed it, no matter how many people contributed.
@@ -50,6 +51,7 @@
 * [Italian](https://github.com/rwldrn/idiomatic.js/tree/master/translations/it_IT)
 * [Russian](https://github.com/rwldrn/idiomatic.js/tree/master/translations/ru_RU)
 * [Romanian](https://github.com/rwldrn/idiomatic.js/tree/master/translations/ro_RO)
+* [简体中文](https://github.com/rwldrn/idiomatic.js/tree/master/translations/zh_CN)
 
 
 ## Important, Non-Idiomatic Stuff:
@@ -133,9 +135,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
 
 1. <a name="whitespace">Whitespace</a>
-  - Never mix spaces and tabs.
-  - When beginning a project, before you write any code, choose between soft indents (spaces) or real tabs, consider this **law**.
-      - For readability, I always recommend setting your editor's indent size to two characters &mdash; this means two spaces or two spaces representing a real tab.
+  - Set your editor to use soft indents (insert spaces when you press the tab key).
+      - The indent size should be two characters (two spaces).
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
@@ -918,10 +919,10 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
 
     // 6.A.3.5
-    // Naming regular expressions
+    // Naming booleans
 
-    rDesc = //;
-
+    `hasDuplicate` is named like a question and implies a boolean type.
+    booleans named in a positive way like `allowChange` helps avoid confusing double negatives.
 
     // 6.A.3.6
     // From the Google Closure Library Style Guide
@@ -932,7 +933,26 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     EnumNamesLikeThis;
     methodNamesLikeThis;
     SYMBOLIC_CONSTANTS_LIKE_THIS;
+    ```
+    
 
+    Prefixing variable names using Hungarian Notation (aDogs oJSONResponse iCount) makes code harder to read and should be avoided.
+    Using descriptive variable names and JSDoc style comments is preferred.
+        
+
+    There are some exceptions where prefixing is well understood and sometimes preferred.
+    ```javascript 
+    // 6.A.4.1
+    // regular expressions 
+    rDesc = //;
+
+    // 6.A.4.2
+    // private or protected 
+    _internalValue;
+
+    // 6.A.4.3
+    // cached copy of a jQuery wrapped object
+    $body = $('body');
     ```
 
     B. Faces of `this`
@@ -1260,8 +1280,106 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
 
+
+11. <a name="semicolons">Semicolons/ASI</a> - AKA "The Crockford Dictum"
+
+    Be explicit and put semicolons where they need to be.  Don't let the interpreter guess where you mean to put semicolons.  It's good for browser compatibility and code maintenance.
+
+  * Use semicolons after the end of every simple statement
+  * Use semicolons after every assignment statement (even when assigning a function literal or object literal), except function statements and when listing out the variables (in which case only the last assignment ends with a semicolon).
+  * Use semicolons after 'return', 'throw', 'continue', or 'break' statements
+
+    A. Semicolons after simple statements
+
+    ```javascript
+
+    // 11.A.1.1
+    // An example with a simple statement
+    // Bad:
+    users.push('Bob')
+
+    // Good:
+    users.push('Bob');
+
+    ```
+
+    B. Semicolons after assignment statements
+
+    ```javascript
+
+    // 11.B.1.1
+    // An example with a list of var assignments, followed by a simple statement
+    // Bad: We end up trying to call a(someFunction());
+    var a = 3
+        b = a
+    (someFunction())
+
+    // Good:
+    var a = 3,
+        b = a;
+    (someFunction());
+
+
+    // 11.B.1.2
+    // An example with a function expression, followed by an immediately executed function
+    // We end up passing the second function as an argument to the first function 
+    // and then trying to call the result of the first function call as a function.
+    // Bad:
+    var fn = function() { 
+      alert('hello'); 
+    }
+
+    (function () {
+      alert('world');
+    })();
+
+    // Good:
+    var fn = function() { 
+      alert('hello'); 
+    };
+
+    (function () {
+      alert('world');
+    })();
+
+		
+
+    // 11.B.1.3
+    // An example with an assignment statement which assigns an object literal
+    // Bad:
+    var dictionary = { 
+      lil  : 'wayne',
+      fat  : 'joe'
+    }
+
+    // Good:
+    var dictionary = { 
+      lil  : 'wayne',
+      fat  : 'joe'
+    };
+
+    ```
+
+    C. Semicolons after 'return', 'throw', 'continue', or 'break' statements
+
+    ```javascript
+
+    // 11.C.1.1
+    // An example with a return statement not returning what the user intended
+    // Bad: the JS interpreter will automatically insert a semicolon after the return statement, 
+    // and the expression a + b won't be returned
+    return
+    a + b;
+
+    // Good: just put the return value on the same line
+    return a + b;
+
+    ```
+
 ## Appendix
 
 ### Comma First.
 
 Any project that cites this document as its base style guide will not accept comma first code formatting, unless explicitly specified otherwise by that project's author.
+
+
