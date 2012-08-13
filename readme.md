@@ -1281,7 +1281,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
 
 
-11. <a name="semicolons">Semicolons/ASI</a>
+11. <a name="semicolons">Semicolons/ASI</a> - AKA "The Crockford Dictum"
 
     Be explicit and put semicolons where they need to be.  Don't let the interpreter guess where you mean to put semicolons.  It's good for browser compatibility and code maintenance.
 
@@ -1321,7 +1321,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
 
     // 11.B.1.2
-    // An example with a function expression, followed by a self-executing anonymous function
+    // An example with a function expression, followed by an immediately executed function
     // We end up passing the second function as an argument to the first function 
     // and then trying to call the result of the first function call as a function.
     // Bad:
