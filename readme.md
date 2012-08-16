@@ -217,7 +217,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.1.1
     // Variables
-    var foo = "bar",
+    var foo = 'bar',
       num = 1,
       undef;
 
@@ -231,19 +231,19 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // and keeps your declaration list free of clutter (also saves a few keystrokes)
 
     // Bad
-    var foo = "";
-    var bar = "";
+    var foo = '';
+    var bar = '';
     var qux;
 
     // Good
-    var foo = "",
-      bar = "",
+    var foo = '',
+      bar = '',
       quux;
 
     // or..
     var // Comment on these
-    foo = "",
-    bar = "",
+    foo = '',
+    bar = '',
     quux;
 
     // 2.B.1.3
@@ -255,13 +255,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       // some statements here
 
-      var bar = "",
+      var bar = '',
         qux;
     }
 
     // Good
     function foo() {
-      var bar = "",
+      var bar = '',
         qux;
 
       // all statements after the variables declarations.
@@ -326,10 +326,10 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // Usage
-    var fooBar = new FooBar({ a: "alpha" });
+    var fooBar = new FooBar({ a: 'alpha' });
 
     fooBar.options;
-    // { a: "alpha" }
+    // { a: 'alpha' }
 
     ```
 
@@ -346,20 +346,20 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     });
 
     // Function accepting an array, no space
-    foo([ "alpha", "beta" ]);
+    foo([ 'alpha', 'beta' ]);
 
     // 2.C.1.2
     // Function accepting an object, no space
     foo({
-      a: "alpha",
-      b: "beta"
+      a: 'alpha',
+      b: 'beta'
     });
 
     // Single argument string literal, no space
-    foo("bar");
+    foo('bar');
 
     // Inner grouping parens, no space
-    if ( !("foo" in obj) ) {
+    if ( !('foo' in obj) ) {
 
     }
 
@@ -408,19 +408,19 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     String:
 
-        typeof variable === "string"
+        typeof variable === 'string'
 
     Number:
 
-        typeof variable === "number"
+        typeof variable === 'number'
 
     Boolean:
 
-        typeof variable === "boolean"
+        typeof variable === 'boolean'
 
     Object:
 
-        typeof variable === "object"
+        typeof variable === 'object'
 
     Array:
 
@@ -443,7 +443,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       Global Variables:
 
-        typeof variable === "undefined"
+        typeof variable === 'undefined'
 
       Local Variables:
 
@@ -453,7 +453,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
         object.prop === undefined
         object.hasOwnProperty( prop )
-        "prop" in object
+        'prop' in object
 
     B. Coerced Types
 
@@ -476,13 +476,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     var foo = 0;
 
     // typeof foo;
-    // "number"
+    // 'number'
     ...
 
     // Somewhere later in your code, you need to update `foo`
     // with a new value derived from an input element
 
-    foo = document.getElementById("foo-input").value;
+    foo = document.getElementById('foo-input').value;
 
     // If you were to test `typeof foo` now, the result would be `string`
     // This means that if you had logic that tested `foo` like:
@@ -493,18 +493,18 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     }
 
-    // `importantTask()` would never be evaluated, even though `foo` has a value of "1"
+    // `importantTask()` would never be evaluated, even though `foo` has a value of '1'
 
 
     // 3.B.1.2
 
     // You can preempt issues by using smart coercion with unary + or - operators:
 
-    foo = +document.getElementById("foo-input").value;
+    foo = +document.getElementById('foo-input').value;
     //    ^ unary + operator will convert its right side operand to a number
 
     // typeof foo;
-    // "number"
+    // 'number'
 
     if ( foo === 1 ) {
 
@@ -523,17 +523,17 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 3.B.2.1
 
     var number = 1,
-      string = "1",
+      string = '1',
       bool = false;
 
     number;
     // 1
 
-    number + "";
-    // "1"
+    number + '';
+    // '1'
 
     string;
-    // "1"
+    // '1'
 
     +string;
     // 1
@@ -550,8 +550,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     +bool;
     // 0
 
-    bool + "";
-    // "false"
+    bool + '';
+    // 'false'
     ```
 
 
@@ -559,13 +559,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 3.B.2.2
 
     var number = 1,
-      string = "1",
+      string = '1',
       bool = true;
 
     string === number;
     // false
 
-    string === number + "";
+    string === number + '';
     // true
 
     +string === number;
@@ -587,25 +587,25 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     ```javascript
     // 3.B.2.3
 
-    var array = [ "a", "b", "c" ];
+    var array = [ 'a', 'b', 'c' ];
 
-    !!~array.indexOf("a");
+    !!~array.indexOf('a');
     // true
 
-    !!~array.indexOf("b");
+    !!~array.indexOf('b');
     // true
 
-    !!~array.indexOf("c");
+    !!~array.indexOf('c');
     // true
 
-    !!~array.indexOf("d");
+    !!~array.indexOf('d');
     // false
 
-    // Note that the above should be considered "unnecessarily clever"
+    // Note that the above should be considered 'unnecessarily clever'
     // Prefer the obvious approach of comparing the returned value of
     // indexOf, like:
 
-    if ( array.indexOf( "a" ) >= 0 ) {
+    if ( array.indexOf( 'a' ) >= 0 ) {
       // ...
     }
     ```
@@ -680,7 +680,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 4.1.3
     // When only evaluating that a string is not empty,
     // instead of this:
-    if ( string !== "" ) ...
+    if ( string !== '' ) ...
 
     // ...evaluate truthiness, like this:
     if ( string ) ...
@@ -689,7 +689,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 4.1.4
     // When only evaluating that a string _is_ empty,
     // instead of this:
-    if ( string === "" ) ...
+    if ( string === '' ) ...
 
     // ...evaluate falsy-ness, like this:
     if ( !string ) ...
@@ -712,13 +712,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // ...use negation to coerce a true evaluation
     if ( !foo ) ...
 
-    // ...Be careful, this will also match: 0, "", null, undefined, NaN
+    // ...Be careful, this will also match: 0, '', null, undefined, NaN
     // If you _MUST_ test for a boolean false, then use
     if ( foo === false ) ...
 
 
     // 4.1.7
-    // When only evaluating a ref that might be null or undefined, but NOT false, "" or 0,
+    // When only evaluating a ref that might be null or undefined, but NOT false, '' or 0,
     // instead of this:
     if ( foo === null || foo === undefined ) ...
 
@@ -726,7 +726,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     if ( foo == null ) ...
 
     // Remember, using == will match a `null` to BOTH `null` and `undefined`
-    // but not `false`, "" or 0
+    // but not `false`, '' or 0
     null == undefined
 
     ```
@@ -741,12 +741,12 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // === does not coerce type, which means that:
 
-    "1" === 1;
+    '1' === 1;
     // false
 
     // == does coerce type, which means that:
 
-    "1" == 1;
+    '1' == 1;
     // true
 
 
@@ -757,10 +757,10 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     true, false
 
     // Truthy:
-    "foo", 1
+    'foo', 1
 
     // Falsy:
-    "", 0, null, undefined, NaN, void 0
+    '', 0, null, undefined, NaN, void 0
 
     ```
 
@@ -775,18 +775,18 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     (function( global ) {
       var Module = (function() {
 
-        var data = "secret";
+        var data = 'secret';
 
         return {
           // This is some boolean property
           bool: true,
           // Some string value
-          string: "a string",
+          string: 'a string',
           // An array property
           array: [ 1, 2, 3, 4 ],
           // An object property
           object: {
-            lang: "en-Us"
+            lang: 'en-Us'
           },
           getData: function() {
             // get the current value of `data`
@@ -862,7 +862,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     function q(s) {
       return document.querySelectorAll(s);
     }
-    var i,a=[],els=q("#foo");
+    var i,a=[],els=q('#foo');
     for(i=0;i<els.length;i++){a.push(els[i]);}
     ```
 
@@ -881,7 +881,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     var idx = 0,
       elements = [],
-      matches = query("#foo"),
+      matches = query('#foo'),
       length = matches.length;
 
     for ( ; idx < length; idx++ ) {
@@ -982,7 +982,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
       setInterval(function() {
 
         // Emit a throttled event
-        this.emit("event");
+        this.emit('event');
 
       }.bind(this), opts.freq || 100 );
     }
@@ -1010,7 +1010,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       setInterval(_.bind(function() {
 
-        this.emit("event");
+        this.emit('event');
 
       }, this), opts.freq || 100 );
     }
@@ -1028,7 +1028,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       setInterval( jQuery.proxy(function() {
 
-        this.emit("event");
+        this.emit('event');
 
       }, this), opts.freq || 100 );
     }
@@ -1046,7 +1046,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       setInterval( dojo.hitch( this, function() {
 
-        this.emit("event");
+        this.emit('event');
 
       }), opts.freq || 100 );
     }
@@ -1072,7 +1072,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       setInterval(function() {
 
-        self.emit("event");
+        self.emit('event');
 
       }, opts.freq || 100 );
     }
@@ -1090,7 +1090,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     var obj;
 
-    obj = { f: "foo", b: "bar", q: "qux" };
+    obj = { f: 'foo', b: 'bar', q: 'qux' };
 
     Object.keys( obj ).forEach(function( key ) {
 
@@ -1102,9 +1102,9 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Prints...
 
-    // "foo"
-    // "bar"
-    // "qux"
+    // 'foo'
+    // 'bar'
+    // 'qux'
 
     ```
 
@@ -1128,10 +1128,10 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // An example switch statement
 
     switch( foo ) {
-      case "alpha":
+      case 'alpha':
         alpha();
         break;
-      case "beta":
+      case 'beta':
         beta();
         break;
       default:
@@ -1141,7 +1141,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 7.A.1.2
     // A alternate approach that supports composability and reusability is to
-    // use an object to store "cases" and a function to delegate:
+    // use an object to store 'cases' and a function to delegate:
 
     var cases, delegator;
 
@@ -1150,17 +1150,17 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
       alpha: function() {
         // statements
         // a return
-        return [ "Alpha", arguments.length ];
+        return [ 'Alpha', arguments.length ];
       },
       beta: function() {
         // statements
         // a return
-        return [ "Beta", arguments.length ];
+        return [ 'Beta', arguments.length ];
       },
       _default: function() {
         // statements
         // a return
-        return [ "Default", arguments.length ];
+        return [ 'Default', arguments.length ];
       }
     };
 
@@ -1189,8 +1189,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 7.A.1.3
     // Put the API in 7.A.1.2 to work:
 
-    delegator( "alpha", 1, 2, 3, 4, 5 );
-    // [ "Alpha", 5 ]
+    delegator( 'alpha', 1, 2, 3, 4, 5 );
+    // [ 'Alpha', 5 ]
 
     // Of course, the `case` key argument could easily be based
     // on some other arbitrary condition.
@@ -1201,24 +1201,24 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     someUserInput = 9;
 
     if ( someUserInput > 10 ) {
-      caseKey = "alpha";
+      caseKey = 'alpha';
     } else {
-      caseKey = "beta";
+      caseKey = 'beta';
     }
 
     // or...
 
-    caseKey = someUserInput > 10 ? "alpha" : "beta";
+    caseKey = someUserInput > 10 ? 'alpha' : 'beta';
 
     // And then...
 
     delegator( caseKey, someUserInput );
-    // [ "Beta", 1 ]
+    // [ 'Beta', 1 ]
 
     // And of course...
 
     delegator();
-    // [ "Default", 0 ]
+    // [ 'Default', 0 ]
 
 
     ```
@@ -1233,9 +1233,9 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
       var ret;
 
       if ( foo ) {
-        ret = "foo";
+        ret = 'foo';
       } else {
-        ret = "quux";
+        ret = 'quux';
       }
       return ret;
     }
@@ -1245,9 +1245,9 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     function returnEarly( foo ) {
 
       if ( foo ) {
-        return "foo";
+        return 'foo';
       }
-      return "quux";
+      return 'quux';
     }
 
     ```
