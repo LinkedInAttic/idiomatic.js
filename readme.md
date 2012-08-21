@@ -137,6 +137,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 1. <a name="whitespace">Whitespace</a>
   - Set your editor to use soft indents (insert spaces when you press the tab key).
       - The indent size should be two characters (two spaces).
+  - Each line of text in your code should be at most 80 characters long.  This rule can be controversial, but helps with displaying multiple windows of code.  We have to set the
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
@@ -396,7 +397,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     E. Quotes
 
-    Whether you prefer single or double shouldn't matter, there is no difference in how JavaScript parses them. What **ABSOLUTELY MUST** be enforced is consistency. **Never mix quotes in the same project. Pick one style and stick with it.**
+    For consistency, single-quotes (') are preferred as opposed to double-quotes (").  This is helpful when creating strings that include HTML.
 
     F. End of Lines and Empty Lines
 
@@ -1272,6 +1273,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
   * Single line above the code that is subject
   * Multiline is good
+  * Inline comments should be of the // variety.
   * End of line comments are prohibited!
   * JSDoc style is good, but requires a significant time investment
 
@@ -1287,6 +1289,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
   * Use semicolons after the end of every simple statement
   * Use semicolons after every assignment statement (even when assigning a function literal or object literal), except function statements and when listing out the variables (in which case only the last assignment ends with a semicolon).
+  * There are a couple of places where missing semicolons are [particularly dangerous](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Semicolons)
   * Use semicolons after 'return', 'throw', 'continue', or 'break' statements
 
     A. Semicolons after simple statements
