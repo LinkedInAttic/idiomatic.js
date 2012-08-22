@@ -260,7 +260,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // Good
-    function foo() {
+    function foo () {
       var bar = '',
         qux;
 
@@ -272,7 +272,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.2.1
     // Named Function Declaration
-    function foo( arg1, argN ) {
+    function foo ( arg1, argN ) {
 
     }
 
@@ -282,7 +282,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.2.2
     // Named Function Declaration
-    function square( number ) {
+    function square ( number ) {
       return number * number;
     }
 
@@ -290,18 +290,18 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     square( 10 );
 
     // Really contrived continuation passing style
-    function square( number, callback ) {
+    function square ( number, callback ) {
       callback( number * number );
     }
 
-    square( 10, function( square ) {
+    square( 10, function ( square ) {
       // callback statements
     });
 
 
     // 2.B.2.3
     // Function Expression
-    var square = function( number ) {
+    var square = function ( number ) {
       // Return something valuable and relevant
       return number * number;
     };
@@ -309,7 +309,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // Function Expression with Identifier
     // This preferred form has the added value of being
     // able to call itself and have an identity in stack traces:
-    var factorial = function factorial( number ) {
+    var factorial = function factorial ( number ) {
       if ( number < 2 ) {
         return 1;
       }
@@ -320,7 +320,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.2.4
     // Constructor Declaration
-    function FooBar( options ) {
+    function FooBar ( options ) {
 
       this.options = options;
     }
@@ -340,7 +340,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.C.1.1
     // Functions with callbacks
-    foo(function() {
+    foo(function () {
       // Note there is no extra space between the first paren
       // of the executing function call and the word "function"
     });
@@ -772,8 +772,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 5.1.1
     // A Practical Module
 
-    (function( global ) {
-      var Module = (function() {
+    (function ( global ) {
+      var Module = (function () {
 
         var data = 'secret';
 
@@ -788,11 +788,11 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
           object: {
             lang: 'en-Us'
           },
-          getData: function() {
+          getData: function () {
             // get the current value of `data`
             return data;
           },
-          setData: function( value ) {
+          setData: function ( value ) {
             // set the value of `data` and return it
             return ( data = value );
           }
@@ -813,26 +813,26 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 5.2.1
     // A Practical Constructor
 
-    (function( global ) {
+    (function ( global ) {
 
-      function Ctor( foo ) {
+      function Ctor ( foo ) {
 
         this.foo = foo;
 
         return this;
       }
 
-      Ctor.prototype.getFoo = function() {
+      Ctor.prototype.getFoo = function () {
         return this.foo;
       };
 
-      Ctor.prototype.setFoo = function( val ) {
+      Ctor.prototype.setFoo = function ( val ) {
         return ( this.foo = val );
       };
 
 
       // To call constructor's without `new`, you might do this:
-      var ctor = function( foo ) {
+      var ctor = function ( foo ) {
         return new Ctor( foo );
       };
 
@@ -859,7 +859,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 6.A.1.1
     // Example of code with poor names
 
-    function q(s) {
+    function q (s) {
       return document.querySelectorAll(s);
     }
     var i,a=[],els=q('#foo');
@@ -875,7 +875,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 6.A.2.1
     // Example of code with improved names
 
-    function query( selector ) {
+    function query ( selector ) {
       return document.querySelectorAll( selector );
     }
 
@@ -962,13 +962,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     ```javascript
 
     // 6.B.1
-    function Device( opts ) {
+    function Device ( opts ) {
 
       this.value = null;
 
       // open an async stream,
       // this will be called continuously
-      stream.read( opts.path, function( data ) {
+      stream.read( opts.path, function ( data ) {
 
         // Update this instance's current value
         // with the most recent value from the
@@ -979,7 +979,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       // Throttle the frequency of events emitted from
       // this Device instance
-      setInterval(function() {
+      setInterval(function () {
 
         // Emit a throttled event
         this.emit('event');
@@ -1002,13 +1002,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       this.value = null;
 
-      stream.read( opts.path, _.bind(function( data ) {
+      stream.read( opts.path, _.bind(function ( data ) {
 
         this.value = data;
 
       }, this) );
 
-      setInterval(_.bind(function() {
+      setInterval(_.bind(function () {
 
         this.emit('event');
 
@@ -1016,17 +1016,17 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // eg. jQuery.proxy
-    function Device( opts ) {
+    function Device ( opts ) {
 
       this.value = null;
 
-      stream.read( opts.path, jQuery.proxy(function( data ) {
+      stream.read( opts.path, jQuery.proxy(function ( data ) {
 
         this.value = data;
 
       }, this) );
 
-      setInterval( jQuery.proxy(function() {
+      setInterval( jQuery.proxy(function () {
 
         this.emit('event');
 
@@ -1034,17 +1034,17 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // eg. dojo.hitch
-    function Device( opts ) {
+    function Device ( opts ) {
 
       this.value = null;
 
-      stream.read( opts.path, dojo.hitch( this, function( data ) {
+      stream.read( opts.path, dojo.hitch( this, function ( data ) {
 
         this.value = data;
 
       }) );
 
-      setInterval( dojo.hitch( this, function() {
+      setInterval( dojo.hitch( this, function () {
 
         this.emit('event');
 
@@ -1059,18 +1059,18 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 6.B.3
 
-    function Device( opts ) {
+    function Device ( opts ) {
       var self = this;
 
       this.value = null;
 
-      stream.read( opts.path, function( data ) {
+      stream.read( opts.path, function ( data ) {
 
         self.value = data;
 
       });
 
-      setInterval(function() {
+      setInterval(function () {
 
         self.emit('event');
 
@@ -1092,7 +1092,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     obj = { f: 'foo', b: 'bar', q: 'qux' };
 
-    Object.keys( obj ).forEach(function( key ) {
+    Object.keys( obj ).forEach(function ( key ) {
 
       // |this| now refers to `obj`
 
@@ -1147,24 +1147,24 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Example returns for illustration only.
     cases = {
-      alpha: function() {
+      alpha: function () {
         // statements
         // a return
         return [ 'Alpha', arguments.length ];
       },
-      beta: function() {
+      beta: function () {
         // statements
         // a return
         return [ 'Beta', arguments.length ];
       },
-      _default: function() {
+      _default: function () {
         // statements
         // a return
         return [ 'Default', arguments.length ];
       }
     };
 
-    delegator = function() {
+    delegator = function () {
       var args, key, delegate;
 
       // Transform arguments list into an array
@@ -1229,7 +1229,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 7.B.1.1
     // Bad:
-    function returnLate( foo ) {
+    function returnLate ( foo ) {
       var ret;
 
       if ( foo ) {
@@ -1242,7 +1242,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Good:
 
-    function returnEarly( foo ) {
+    function returnEarly ( foo ) {
 
       if ( foo ) {
         return 'foo';
@@ -1325,7 +1325,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // We end up passing the second function as an argument to the first function
     // and then trying to call the result of the first function call as a function.
     // Bad:
-    var fn = function() {
+    var fn = function () {
       alert('hello');
     }
 
@@ -1334,7 +1334,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     })();
 
     // Good:
-    var fn = function() {
+    var fn = function () {
       alert('hello');
     };
 
