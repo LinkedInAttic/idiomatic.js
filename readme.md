@@ -137,7 +137,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 1. <a name="whitespace">Whitespace</a>
   - Set your editor to use soft indents (insert spaces when you press the tab key).
       - The indent size should be two characters (two spaces).
-  - Each line of text in your code should be at most 80 characters long.  This rule can be controversial, but helps with displaying multiple windows of code.  We have to set the
+  - Each line of code should be at most 100 characters long.  This will be loosely enforced through code reviews.  However, a line must definitely not exceed 200 characters.  Lint checking will enforce this.
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
