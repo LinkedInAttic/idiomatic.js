@@ -1286,7 +1286,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     Be explicit and put semicolons where they need to be.  Don't let the interpreter guess where you mean to put semicolons.  It's good for browser compatibility and code maintenance.
 
   * Use semicolons after the end of every simple statement
-  * Use semicolons after every assignment statement (even when assigning a function literal or object literal), except function statements and when listing out the variables (in which case only the last assignment ends with a semicolon).
+  * Use semicolons after every assignment statement (even when assigning a function literal or object literal).
   * Use semicolons after 'return', 'throw', 'continue', or 'break' statements
 
     A. Semicolons after simple statements
