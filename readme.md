@@ -137,6 +137,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 1. <a name="whitespace">Whitespace</a>
   - Set your editor to use soft indents (insert spaces when you press the tab key).
       - The indent size should be two characters (two spaces).
+  - Each line of code should be at most 100 characters long.  This will be loosely enforced through code reviews.  However, a line must definitely not exceed 200 characters.  Lint checking will enforce this.
   - If your editor supports it, always work with the "show invisibles" setting turned on. The benefits of this practice are:
       - Enforced consistency
       - Eliminating end of line whitespace
@@ -260,7 +261,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // Good
-    function foo () {
+    function foo() {
       var bar = '',
         qux;
 
@@ -272,7 +273,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.2.1
     // Named Function Declaration
-    function foo ( arg1, argN ) {
+    function foo( arg1, argN ) {
 
     }
 
@@ -282,7 +283,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.2.2
     // Named Function Declaration
-    function square ( number ) {
+    function square( number ) {
       return number * number;
     }
 
@@ -290,18 +291,18 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     square( 10 );
 
     // Really contrived continuation passing style
-    function square ( number, callback ) {
+    function square( number, callback ) {
       callback( number * number );
     }
 
-    square( 10, function ( square ) {
+    square( 10, function( square ) {
       // callback statements
     });
 
 
     // 2.B.2.3
     // Function Expression
-    var square = function ( number ) {
+    var square = function( number ) {
       // Return something valuable and relevant
       return number * number;
     };
@@ -309,7 +310,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // Function Expression with Identifier
     // This preferred form has the added value of being
     // able to call itself and have an identity in stack traces:
-    var factorial = function factorial ( number ) {
+    var factorial = function factorial( number ) {
       if ( number < 2 ) {
         return 1;
       }
@@ -320,7 +321,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.2.4
     // Constructor Declaration
-    function FooBar ( options ) {
+    function FooBar( options ) {
 
       this.options = options;
     }
@@ -340,7 +341,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.C.1.1
     // Functions with callbacks
-    foo(function () {
+    foo(function() {
       // Note there is no extra space between the first paren
       // of the executing function call and the word "function"
     });
@@ -396,7 +397,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     E. Quotes
 
-    Whether you prefer single or double shouldn't matter, there is no difference in how JavaScript parses them. What **ABSOLUTELY MUST** be enforced is consistency. **Never mix quotes in the same project. Pick one style and stick with it.**
+    For consistency, single-quotes (') are preferred as opposed to double-quotes (").  This is helpful when creating strings that include HTML.
 
     F. End of Lines and Empty Lines
 
@@ -772,8 +773,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 5.1.1
     // A Practical Module
 
-    (function ( global ) {
-      var Module = (function () {
+    (function( global ) {
+      var Module = (function() {
 
         var data = 'secret';
 
@@ -788,11 +789,11 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
           object: {
             lang: 'en-Us'
           },
-          getData: function () {
+          getData: function() {
             // get the current value of `data`
             return data;
           },
-          setData: function ( value ) {
+          setData: function( value ) {
             // set the value of `data` and return it
             return ( data = value );
           }
@@ -813,26 +814,26 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 5.2.1
     // A Practical Constructor
 
-    (function ( global ) {
+    (function( global ) {
 
-      function Ctor ( foo ) {
+      function Ctor( foo ) {
 
         this.foo = foo;
 
         return this;
       }
 
-      Ctor.prototype.getFoo = function () {
+      Ctor.prototype.getFoo = function() {
         return this.foo;
       };
 
-      Ctor.prototype.setFoo = function ( val ) {
+      Ctor.prototype.setFoo = function( val ) {
         return ( this.foo = val );
       };
 
 
       // To call constructor's without `new`, you might do this:
-      var ctor = function ( foo ) {
+      var ctor = function( foo ) {
         return new Ctor( foo );
       };
 
@@ -859,7 +860,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 6.A.1.1
     // Example of code with poor names
 
-    function q (s) {
+    function q(s) {
       return document.querySelectorAll(s);
     }
     var i,a=[],els=q('#foo');
@@ -875,7 +876,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 6.A.2.1
     // Example of code with improved names
 
-    function query ( selector ) {
+    function query( selector ) {
       return document.querySelectorAll( selector );
     }
 
@@ -934,20 +935,20 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     methodNamesLikeThis;
     SYMBOLIC_CONSTANTS_LIKE_THIS;
     ```
-
+    
 
     Prefixing variable names using Hungarian Notation (aDogs oJSONResponse iCount) makes code harder to read and should be avoided.
     Using descriptive variable names and JSDoc style comments is preferred.
-
+        
 
     There are some exceptions where prefixing is well understood and sometimes preferred.
-    ```javascript
+    ```javascript 
     // 6.A.4.1
-    // regular expressions
+    // regular expressions 
     rDesc = //;
 
     // 6.A.4.2
-    // private or protected
+    // private or protected 
     _internalValue;
 
     // 6.A.4.3
@@ -962,13 +963,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     ```javascript
 
     // 6.B.1
-    function Device ( opts ) {
+    function Device( opts ) {
 
       this.value = null;
 
       // open an async stream,
       // this will be called continuously
-      stream.read( opts.path, function ( data ) {
+      stream.read( opts.path, function( data ) {
 
         // Update this instance's current value
         // with the most recent value from the
@@ -979,7 +980,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       // Throttle the frequency of events emitted from
       // this Device instance
-      setInterval(function () {
+      setInterval(function() {
 
         // Emit a throttled event
         this.emit('event');
@@ -1002,13 +1003,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       this.value = null;
 
-      stream.read( opts.path, _.bind(function ( data ) {
+      stream.read( opts.path, _.bind(function( data ) {
 
         this.value = data;
 
       }, this) );
 
-      setInterval(_.bind(function () {
+      setInterval(_.bind(function() {
 
         this.emit('event');
 
@@ -1016,17 +1017,17 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // eg. jQuery.proxy
-    function Device ( opts ) {
+    function Device( opts ) {
 
       this.value = null;
 
-      stream.read( opts.path, jQuery.proxy(function ( data ) {
+      stream.read( opts.path, jQuery.proxy(function( data ) {
 
         this.value = data;
 
       }, this) );
 
-      setInterval( jQuery.proxy(function () {
+      setInterval( jQuery.proxy(function() {
 
         this.emit('event');
 
@@ -1034,17 +1035,17 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     }
 
     // eg. dojo.hitch
-    function Device ( opts ) {
+    function Device( opts ) {
 
       this.value = null;
 
-      stream.read( opts.path, dojo.hitch( this, function ( data ) {
+      stream.read( opts.path, dojo.hitch( this, function( data ) {
 
         this.value = data;
 
       }) );
 
-      setInterval( dojo.hitch( this, function () {
+      setInterval( dojo.hitch( this, function() {
 
         this.emit('event');
 
@@ -1059,18 +1060,18 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 6.B.3
 
-    function Device ( opts ) {
+    function Device( opts ) {
       var self = this;
 
       this.value = null;
 
-      stream.read( opts.path, function ( data ) {
+      stream.read( opts.path, function( data ) {
 
         self.value = data;
 
       });
 
-      setInterval(function () {
+      setInterval(function() {
 
         self.emit('event');
 
@@ -1092,7 +1093,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     obj = { f: 'foo', b: 'bar', q: 'qux' };
 
-    Object.keys( obj ).forEach(function ( key ) {
+    Object.keys( obj ).forEach(function( key ) {
 
       // |this| now refers to `obj`
 
@@ -1147,24 +1148,24 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Example returns for illustration only.
     cases = {
-      alpha: function () {
+      alpha: function() {
         // statements
         // a return
         return [ 'Alpha', arguments.length ];
       },
-      beta: function () {
+      beta: function() {
         // statements
         // a return
         return [ 'Beta', arguments.length ];
       },
-      _default: function () {
+      _default: function() {
         // statements
         // a return
         return [ 'Default', arguments.length ];
       }
     };
 
-    delegator = function () {
+    delegator = function() {
       var args, key, delegate;
 
       // Transform arguments list into an array
@@ -1229,7 +1230,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 7.B.1.1
     // Bad:
-    function returnLate ( foo ) {
+    function returnLate( foo ) {
       var ret;
 
       if ( foo ) {
@@ -1242,7 +1243,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Good:
 
-    function returnEarly ( foo ) {
+    function returnEarly( foo ) {
 
       if ( foo ) {
         return 'foo';
@@ -1272,6 +1273,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
   * Single line above the code that is subject
   * Multiline is good
+  * Inline comments should be of the // variety.
   * End of line comments are prohibited!
   * JSDoc style is good, but requires a significant time investment
 
@@ -1286,7 +1288,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     Be explicit and put semicolons where they need to be.  Don't let the interpreter guess where you mean to put semicolons.  It's good for browser compatibility and code maintenance.
 
   * Use semicolons after the end of every simple statement
-  * Use semicolons after every assignment statement (even when assigning a function literal or object literal).
+  * Use semicolons after every assignment statement (even when assigning a function literal or object literal), except function statements and when listing out the variables (in which case only the last assignment ends with a semicolon).
+  * There are a couple of places where missing semicolons are [particularly dangerous](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Semicolons)
   * Use semicolons after 'return', 'throw', 'continue', or 'break' statements
 
     A. Semicolons after simple statements
@@ -1322,11 +1325,11 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 11.B.1.2
     // An example with a function expression, followed by an immediately executed function
-    // We end up passing the second function as an argument to the first function
+    // We end up passing the second function as an argument to the first function 
     // and then trying to call the result of the first function call as a function.
     // Bad:
-    var fn = function () {
-      alert('hello');
+    var fn = function() { 
+      alert('hello'); 
     }
 
     (function () {
@@ -1334,25 +1337,26 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     })();
 
     // Good:
-    var fn = function () {
-      alert('hello');
+    var fn = function() { 
+      alert('hello'); 
     };
 
     (function () {
       alert('world');
     })();
 
+		
 
     // 11.B.1.3
     // An example with an assignment statement which assigns an object literal
     // Bad:
-    var dictionary = {
+    var dictionary = { 
       lil  : 'wayne',
       fat  : 'joe'
     }
 
     // Good:
-    var dictionary = {
+    var dictionary = { 
       lil  : 'wayne',
       fat  : 'joe'
     };
@@ -1365,7 +1369,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 11.C.1.1
     // An example with a return statement not returning what the user intended
-    // Bad: the JS interpreter will automatically insert a semicolon after the return statement,
+    // Bad: the JS interpreter will automatically insert a semicolon after the return statement, 
     // and the expression a + b won't be returned
     return
     a + b;
