@@ -1383,7 +1383,7 @@ The following is a summary of differences between the original Idiomatic.js and 
 
 * Indent size is two spaces (not tabs).
 * Use single quotes.
-* No spaces inside parentheses, square brackets, or curly braces.
+* No wrapping spaces inside parentheses, square brackets, or curly braces, e.g. (param1, param2) instead of ( param1, param2 ).
 * Hungarian notation should be avoided, except for regular expressions, private members, and jQuery objects.
 * Use semicolons like Crockford would.
 
