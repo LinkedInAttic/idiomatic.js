@@ -1377,6 +1377,15 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     return a + b;
 
     ```
+## LinkedIn Specific Changes
+
+The following is a summary of differences between the original Idiomatic.js and this LinkedIn version:
+
+* Indent size is two spaces (not tabs).
+* Use single quotes.
+* No spaces inside parentheses, square brackets, or curly braces.
+* Hungarian notation should be avoided, except for regular expressions, private members, and jQuery objects.
+* Use semicolons like Crockford would.
 
 ## Appendix
 
