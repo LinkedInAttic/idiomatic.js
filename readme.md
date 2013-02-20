@@ -935,20 +935,20 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     methodNamesLikeThis;
     SYMBOLIC_CONSTANTS_LIKE_THIS;
     ```
-    
+
 
     Prefixing variable names using Hungarian Notation (aDogs oJSONResponse iCount) makes code harder to read and should be avoided.
     Using descriptive variable names and JSDoc style comments is preferred.
-        
+
 
     There are some exceptions where prefixing is well understood and sometimes preferred.
-    ```javascript 
+    ```javascript
     // 6.A.4.1
-    // regular expressions 
+    // regular expressions
     rDesc = //;
 
     // 6.A.4.2
-    // private or protected 
+    // private or protected
     _internalValue;
 
     // 6.A.4.3
@@ -1325,11 +1325,11 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 11.B.1.2
     // An example with a function expression, followed by an immediately executed function
-    // We end up passing the second function as an argument to the first function 
+    // We end up passing the second function as an argument to the first function
     // and then trying to call the result of the first function call as a function.
     // Bad:
-    var fn = function() { 
-      alert('hello'); 
+    var fn = function() {
+      alert('hello');
     }
 
     (function() {
@@ -1337,8 +1337,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     })();
 
     // Good:
-    var fn = function() { 
-      alert('hello'); 
+    var fn = function() {
+      alert('hello');
     };
 
     (function() {
@@ -1349,13 +1349,13 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
     // 11.B.1.3
     // An example with an assignment statement which assigns an object literal
     // Bad:
-    var dictionary = { 
+    var dictionary = {
       lil  : 'wayne',
       fat  : 'joe'
     }
 
     // Good:
-    var dictionary = { 
+    var dictionary = {
       lil  : 'wayne',
       fat  : 'joe'
     };
@@ -1368,7 +1368,7 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 11.C.1.1
     // An example with a return statement not returning what the user intended
-    // Bad: the JS interpreter will automatically insert a semicolon after the return statement, 
+    // Bad: the JS interpreter will automatically insert a semicolon after the return statement,
     // and the expression a + b won't be returned
     return
     a + b;
@@ -1386,6 +1386,7 @@ The following is a summary of differences between the original Idiomatic.js and 
 * No wrapping spaces inside parentheses, square brackets, or curly braces, e.g. (param1, param2) instead of ( param1, param2 ).
 * Hungarian notation should be avoided, except for regular expressions, private members, and jQuery objects.
 * Use semicolons like Crockford would.
+* Function declarations are allowed to declare variables in their paramaters, and not use them. This serves well for code-as-documentation. Refrain from declaring variables outside of parameters without using them, however.
 
 ## Appendix
 
