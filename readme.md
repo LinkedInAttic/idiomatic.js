@@ -94,6 +94,7 @@ Projects should always attempt to include some generic means by which source can
 
 Projects _must_ include some form of unit, reference, implementation or functional testing. Use case demos DO NOT QUALIFY as "tests". The following is a list of test frameworks, none of which are endorsed more than the other.
 
+ * [Venus.js](http://www.venusjs.org)
  * [QUnit](http://github.com/jquery/qunit)
  * [Jasmine](https://github.com/pivotal/jasmine)
  * [Vows](https://github.com/cloudhead/vows)
